@@ -1,34 +1,38 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center">
+    Ig News
+</h1>
 
-## Getting Started
+<p align="center">
+  <a href="https://www.crisnaldocarvalho.com.br">
+    <img alt="Made by Crisnaldo" src="https://img.shields.io/badge/made%20by-Crisnaldo Carvalho-eba417">
+  </a>
 
-First, run the development server:
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-121214">
 
-```bash
-npm run dev
-# or
-yarn dev
+  <img alt="License" src="https://img.shields.io/github/repo-size/CrisnaldoSantos/ig-news?color=eba417">
+
+  <img alt="License" src="https://img.shields.io/github/languages/count/CrisnaldoSantos/ig-news?color=121214">
+
+</p>
+
+## Descrição:
+
+<p>
+Aplicação front-end em ReactJS contruída com NextJs, durante o curso de especialização Ignite React. O objetivo é aplicar o NextJS em uima aplicação serveless utilizando ApiRoutes para comunicação com os serviços.</p>
+<p>
+A aplicação consiste em uma newsletter vendida por assinatura, com isso possui integração com o Stripe para pagamentos, a persitÊncia ocorre através do FaunaDB, e os posts da plataforma são integrados ao Prismic CMS.
+
+## Executando o projeto
+
+Após clonar o repositório,entrar na pasta raiz do projeto e instale as dependências com os comandos abaixo via terminal:
+
+```js
+cd ig-news
+yarn install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Com o terminal ainda na pasta raiz do projeto, execute o comando:
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```js
+yarn dev
+```
