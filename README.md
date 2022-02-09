@@ -20,7 +20,7 @@
 <p>
 Aplicação front-end em ReactJS contruída com NextJs, durante o curso de especialização Ignite React. O objetivo é aplicar o NextJS em uima aplicação serveless utilizando ApiRoutes para comunicação com os serviços.</p>
 <p>
-A aplicação consiste em uma newsletter vendida por assinatura, com isso possui integração com o Stripe para pagamentos, a persitÊncia ocorre através do FaunaDB, e os posts da plataforma são integrados ao Prismic CMS.
+A aplicação consiste em uma newsletter vendida por assinatura, com isso possui integração com o Stripe para pagamentos, a persitência ocorre através do FaunaDB, e os posts da plataforma são integrados ao Prismic CMS.
 
 ## Executando o projeto
 
@@ -31,6 +31,7 @@ cd ig-news
 yarn install
 ```
 
+Abra o projeto em um editor de sua preferência, renomeie o arquivo .env.example para .env.local e preencha todas as variáveis de ambiente solicitadas.
 Com o terminal ainda na pasta raiz do projeto, execute o comando:
 
 ```js
