@@ -1,10 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { GetServerSideProps } from 'next'
-import { getSession } from 'next-auth/react'
+import { GetStaticPaths, GetStaticProps } from 'next'
+import { useSession } from 'next-auth/react'
 import Head from 'next/head'
+import Link from 'next/link'
+import Router from 'next/router'
 import { RichText } from 'prismic-dom'
+import { useEffect } from 'react'
 import { getPrismicClient } from 'services/prismic'
-import styles from './post.module.scss'
+import styles from '../post.module.scss'
 
 interface PostProps {
   post: {
@@ -16,6 +19,14 @@ interface PostProps {
 }
 
 export default function Post({ post }: PostProps) {
+  const { data: session } = useSession()
+
+  useEffect(() => {
+    if (session?.activeSubscription) {
+      Router.push(`/posts/${post.slug}`)
+    }
+  }, [post.slug, session])
+
   return (
     <>
       <Head>
@@ -26,30 +37,31 @@ export default function Post({ post }: PostProps) {
           <h1>{post.title}</h1>
           <time>{post.updatedAt}</time>
           <div
-            className={styles.postContent}
+            className={`${styles.postContent} ${styles.previewContent}`}
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
+
+          <div className={styles.continueReading}>
+            Wanna continue reading?
+            <Link href="/">
+              <a href="">Subscribe now 🤗</a>
+            </Link>
+          </div>
         </article>
       </main>
     </>
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({
-  req,
-  params,
-}) => {
-  const session = await getSession({ req })
-  const { slug } = params
-
-  if (!session.activeSubscription) {
-    return {
-      redirect: {
-        destination: '/',
-        permanent: false,
-      },
-    }
+export const getStaticPaths: GetStaticPaths = () => {
+  return {
+    paths: [],
+    fallback: 'blocking',
   }
+}
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const { slug } = params
 
   if (slug === 'favicon.png') {
     return {
@@ -59,13 +71,13 @@ export const getServerSideProps: GetServerSideProps = async ({
       },
     }
   }
-  const prismic = getPrismicClient(req)
+  const prismic = getPrismicClient()
   const response = await prismic.getByUID<any>('post', String(slug), {})
 
   const post = {
     slug: response.uid,
     title: RichText.asText(response.data.title),
-    content: RichText.asHtml(response.data.content),
+    content: RichText.asHtml(response.data.content.splice(0, 2)),
     updatedAt: new Date(response.last_publication_date).toLocaleDateString(
       'pt-BR',
       {
@@ -80,5 +92,6 @@ export const getServerSideProps: GetServerSideProps = async ({
     props: {
       post,
     },
+    revalidate: 60 * 30,
   }
 }
