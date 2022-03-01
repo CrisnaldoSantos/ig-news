@@ -18,7 +18,7 @@
 ## Descrição:
 
 <p>
-Aplicação front-end em ReactJS contruída com NextJs, durante o curso de especialização Ignite React. O objetivo é aplicar o NextJS em uima aplicação serveless utilizando ApiRoutes para comunicação com os serviços.</p>
+Aplicação JAM Stack front-end em ReactJS contruída com NextJs, durante o curso de especialização Ignite React. O objetivo é aplicar o NextJS em uima aplicação serveless utilizando ApiRoutes para comunicação com os serviços.</p>
 <p>
 A aplicação consiste em uma newsletter vendida por assinatura, com isso possui integração com o Stripe para pagamentos, a persitência ocorre através do FaunaDB, e os posts da plataforma são integrados ao Prismic CMS.
 
